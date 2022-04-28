@@ -4,7 +4,7 @@ pipeline {
        IMAGE_TAG = "latest"
        STAGING = "frikel-staging"
        PRODUCTION = "frikel-production"
-       Docker_mot = "Hamzafrikel1997" 
+       DOCKERHUB_PASSWORD = credentials('dockerhubpassword') 
      }
      agent none
      stages {
@@ -54,7 +54,7 @@ pipeline {
           steps {
              script {
              sh '''
-              echo $Docker_mot | docker login -u frikel --password-stdin
+              echo $DOCKERHUB_PASSWORD | docker login -u frikel --password-stdin
               docker push frikel/$IMAGE_NAME:$IMAGE_TAG
           '''
         }
