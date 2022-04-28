@@ -47,6 +47,18 @@ pipeline {
              }
           }
      }
+                
+      stage ('Login and Push Image on docker hub') {
+          agent any
+          steps {
+             script {
+             sh '''
+              echo Hamzafrikel1997 | docker login -u Frikel --password-stdin
+              docker push Frikel/$IMAGE_NAME:$IMAGE_TAG
+          '''
+        }
+     }
+ }
      stage('Push image in staging and deploy it') {
        when {
               expression { GIT_BRANCH == 'origin/master' }
