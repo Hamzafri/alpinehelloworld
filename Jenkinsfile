@@ -53,8 +53,8 @@ pipeline {
           steps {
              script {
              sh '''
-              echo Hamzafrikel1997 | docker login -u Frikel --password-stdin
-              docker push Frikel/$IMAGE_NAME:$IMAGE_TAG
+              echo Hamzafrikel1997 | docker login -u frikel --password-stdin
+              docker push frikel/$IMAGE_NAME:$IMAGE_TAG
           '''
         }
      }
